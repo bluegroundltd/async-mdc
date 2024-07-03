@@ -1,0 +1,14 @@
+# This file is written to be a whitelist instead of a blacklist. Start by
+# ignoring everything, then add back the files we want to be included in the
+# final NPM package.
+*
+
+# And these are the files that are allowed.
+# cjs
+!build/cjs/**/*.js
+!build/cjs/**/*.js.map
+!build/cjs/**/package.json
+# esm
+!build/esm/**/*.js
+!build/esm/**/*.js.map
+!build/esm/**/package.json

@@ -1,0 +1,78 @@
+{
+  "name": "async-mdc",
+  "version": "1.0.0",
+  "description": "Async hooks based Mapped Diagnostic Context, inspired by SLF4J's MDC. Typically used with logging libraries for log enrichment.",
+  "keywords": [
+    "async",
+    "asynclocalstorage",
+    "logger",
+    "logging",
+    "logs",
+    "mapped diagnostic context",
+    "mdc"
+  ],
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "author": "Stratos Pavlakis <pavlakis.stratos@gmail.com>",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "main": "dist/csm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build:cjs": "tsc --module commonjs --declaration --sourceMap --outDir dist/cjs",
+    "build:esm": "tsc --module NodeNext --declaration --sourceMap --outDir dist/esm",
+    "build:package:esm": "echo '{\"type\": \"module\"}' > ./dist/esm/package.json",
+    "build:package:cjs": "echo '{\"type\": \"commonjs\"}' > ./dist/cjs/package.json",
+    "build": "run-s build:* build:package:*",
+    "lint:eslint": "eslint ./src",
+    "lint:prettier": "prettier --check ./src",
+    "lint:tsc": "tsc --noEmit",
+    "lint": "run-s lint:prettier lint:eslint lint:tsc",
+    "prebuild": "rimraf dist/ && mkdir dist",
+    "test": "test",
+    "types:cjs": "tsc --emitDeclarationOnly --declaration --outdir dist/cjs",
+    "types:esm": "tsc --emitDeclarationOnly --declaration --outdir dist/esm",
+    "types": "run-s types:*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "npm run lint",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/js": "^9.6.0",
+    "@types/node": "^20.14.9",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.3.2",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
