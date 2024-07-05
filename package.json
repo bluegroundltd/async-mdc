@@ -1,5 +1,5 @@
 {
-  "name": "@blueground/async-mdc",
+  "name": "@bluegroundltd/async-mdc",
   "version": "1.0.0",
   "description": "Async hooks based Mapped Diagnostic Context, inspired by SLF4J's MDC. Typically used with logging libraries for log enrichment.",
   "keywords": [
@@ -21,7 +21,7 @@
       "import": "./dist/esm/index.js"
     }
   },
-  "main": "dist/csm/index.js",
+  "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": [
@@ -73,7 +73,12 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@bluegroundltd"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluegroundltd/async-mdc.git"
+  },
+  "homepage": "https://github.com/bluegroundltd/async-mdc#readme",
+  "bugs": {
+    "url": "https://github.com/bluegroundltd/async-mdc/issues"
   }
 }
