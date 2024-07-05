@@ -4,7 +4,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["ES2023"],
-    "module": "NodeNext",
+    "module": "node16",
     "outDir": "./dist",
     "rootDir": "./src",
     "skipLibCheck": true,
