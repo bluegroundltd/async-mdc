@@ -2,14 +2,30 @@ import {AsyncLocalStorage} from 'node:async_hooks';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class MDC<Store extends Record<string, unknown> = Record<string, any>> {
-  constructor(private _storage: AsyncLocalStorage<Store>) {}
+  #storage: AsyncLocalStorage<Store>;
 
-  get<K extends keyof Store>(key: K) {
+  constructor(storage?: AsyncLocalStorage<Store>) {
+    this.#storage = storage ?? new AsyncLocalStorage<Store>();
+  }
+
+  get<K extends keyof Store>(
+    key: K,
+    defaultValue?: Store[K]
+  ): Store[K] | undefined {
     const store = this.storage.getStore();
     if (!store) {
       throw new Error('async-mdc: AsyncLocalStorage store is not available');
     }
-    return store[key];
+    return store[key] ?? defaultValue;
+  }
+
+  safeGet<K extends keyof Store>(
+    key: K,
+    defaultValue?: Store[K]
+  ): Store[K] | undefined {
+    const store = this.storage.getStore();
+    if (!store) return defaultValue;
+    return store[key] ?? defaultValue;
   }
 
   set<K extends keyof Store>(key: K, value: Store[K]) {
@@ -17,6 +33,12 @@ export class MDC<Store extends Record<string, unknown> = Record<string, any>> {
     if (!store) {
       throw new Error('async-mdc: AsyncLocalStorage store is not available');
     }
+    store[key] = value;
+  }
+
+  safeSet<K extends keyof Store>(key: K, value: Store[K]) {
+    const store = this.storage.getStore();
+    if (!store) return;
     store[key] = value;
   }
 
@@ -34,7 +56,7 @@ export class MDC<Store extends Record<string, unknown> = Record<string, any>> {
   }
 
   get storage() {
-    return this._storage;
+    return this.#storage;
   }
 
   run<R>(store: Store, callback: () => R): R {

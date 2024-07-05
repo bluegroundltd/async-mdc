@@ -1,1 +1,1 @@
-export * from 'mdc.js';
+export * from './mdc.js';
