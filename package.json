@@ -1,6 +1,6 @@
 {
   "name": "@blueground/async-mdc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Async hooks based Mapped Diagnostic Context, inspired by SLF4J's MDC. Typically used with logging libraries for log enrichment.",
   "keywords": [
     "async",
