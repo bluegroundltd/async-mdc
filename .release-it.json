@@ -12,7 +12,7 @@
     "release": true
   },
   "npm": {
-    "publish": false,
+    "publish": true,
     "allowSameVersion": true
   }
 }
