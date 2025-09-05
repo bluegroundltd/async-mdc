@@ -1,5 +1,10 @@
 # Async MDC
 
+[![npm version](https://img.shields.io/npm/v/@blueground/async-mdc.svg)](https://www.npmjs.com/package/@blueground/async-mdc)
+[![npm downloads](https://img.shields.io/npm/dm/@blueground/async-mdc.svg)](https://www.npmjs.com/package/@blueground/async-mdc)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@blueground/async-mdc)](https://bundlephobia.com/package/@blueground/async-mdc)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A lightweight, type-safe Mapped Diagnostic Context (MDC) implementation for Node.js applications using async hooks. This library provides a clean way to manage contextual data across asynchronous operations, making it perfect for request tracing, logging, and maintaining application state throughout the call chain.
 
 ## Features
